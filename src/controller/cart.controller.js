@@ -23,7 +23,7 @@ const addProductCart = async (req, res) => {
   const products = await pm.getProductsById(pid);
 
   if (products) {
-      await cart.addProductCart(cid, products.id);
+     const resp = await cart.addProductCart(cid, products.id);
       res.json({ msg:"Producto Agregado"});
     } else {
       res.json({ msg:"Producto no Encontrado"});
