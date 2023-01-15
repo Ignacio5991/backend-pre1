@@ -64,7 +64,7 @@ class ProductManager {
   }
   getProductsById = async(id)=>{
     const {products} = await readFile (this.path);
-    const productId = products.find((product)=>product.id == id)
+    const productId = products.find((product)=>product.id === id)
     if (productId){
         return productId
     }else{
@@ -76,7 +76,7 @@ class ProductManager {
   async updateProducts(id,object) {
     const{products} = await readFile (this.path);
     this.products = products
-    const productUpgrade = this.products.findIndex((element)=>element.id == id)
+    const productUpgrade = this.products.findIndex((element)=>element.id === id)
     if (productUpgrade !== -1){
       const id = this.products[productUpgrade].id
       this.products[productUpgrade]={
