@@ -21,11 +21,12 @@ const getchango = async (req, res) => {
 const addProductCart = async (req, res) => {
   const { cid, pid } = req.params;
   const products = await pm.getProductsById(pid);
-  if (!products.error) {
+
+  if (products) {
       await cart.addProductCart(cid, products.id);
-      res.json();
+      res.json({ msg:"Producto Agregado"});
     } else {
-      res.json(products.status).send(products);
+      res.json({ msg:"Producto no Encontrado"});
   }
 //   if (products.error) {
 //     res.json(products.status).send(products);

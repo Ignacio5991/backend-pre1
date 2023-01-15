@@ -37,8 +37,6 @@ class cartManager {
   };
 
   addProductCart = async (cid,pid) => {
-    console.log(cid);
-    console.log(pid);
     const carts = await readFile (this.path);
     if (carts [cid]){
         const productIndex = carts [cid].products.findIndex((element)=>element.id == pid)
@@ -50,7 +48,7 @@ class cartManager {
         await writeFile (this.path,carts);
         return carts;
     } else{
-        return { status: 400, error: "El carrito no existe" };
+      return ({ msg: "Carrito No encontrado"} );
     }
   }
 
