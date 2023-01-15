@@ -1,5 +1,6 @@
 // import fs, { readFile } from 'fs';
-const fs = require ("fs")
+const fs = require ("fs");
+const { parse } = require("path");
 
 const readFile = async(path)=>{
     const productsDocument = await fs.promises.readFile(path);
@@ -64,14 +65,13 @@ class ProductManager {
   }
   getProductsById = async(id)=>{
     const {products} = await readFile (this.path);
-    const productId = products.find((product)=>product.id === id)
+    const productId = products.find((product)=>product.id === parseInt(id));
     if (productId){
-        return productId
+        return productId;
     }else{
-      return{status:400,error:"El producto no se encuentra"}
+      return null;
     }
-
-  }
+  };
 
   async updateProducts(id,object) {
     const{products} = await readFile (this.path);

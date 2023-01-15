@@ -9,7 +9,7 @@ server.use('/api/products/', productsroute);
 server.use('/api/products/',productsroute);
 server.use('/api/products/',productsroute);
 server.use('/api/products/',productsroute);
-server.use('/api/products/',productsroute)
+server.use('/api/products/',productsroute);
 
 
 //Rutas del cart
